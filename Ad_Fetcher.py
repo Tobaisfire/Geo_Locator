@@ -45,8 +45,11 @@ try:
         uploaded_file = st.file_uploader("Choose a file")
         if uploaded_file is not None:
             if (uploaded_file.name).split('.')[1] == 'csv':
+                print(uploaded_file.name)
                 dataframe = pd.read_csv(uploaded_file)
             elif (uploaded_file.name).split('.')[1] == 'xlsx':
+                print(uploaded_file.name)
+                print((uploaded_file.name).split('.')[1])
                 dataframe = pd.read_excel(uploaded_file)
             else:
                 st.error('Wrong File extension please provide :1 csv or :2 xlsx', icon="🚨")
