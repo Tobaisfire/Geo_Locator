@@ -1,14 +1,14 @@
 import streamlit as st
 import pandas as pd
-from seleniumwire import webdriver
+# from seleniumwire import webdriver
 from bs4 import BeautifulSoup
 
 from time import sleep
 import warnings
 
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
+# from selenium.webdriver.support.ui import WebDriverWait
+# from selenium.webdriver.support import expected_conditions as EC
+# from selenium.webdriver.common.by import By
 from datetime import datetime
 import requests
 
