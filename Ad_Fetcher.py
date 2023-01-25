@@ -44,8 +44,14 @@ try:
     with col1:
         uploaded_file = st.file_uploader("Choose a file")
         if uploaded_file is not None:
-            print(uploaded_file.name)
-            dataframe = pd.read_csv(uploaded_file)
+            if (uploaded_file.name).split('.')[1] == 'csv':
+                dataframe = pd.read_csv(uploaded_file)
+            elif (uploaded_file.name).split('.')[1] == 'xlsx':
+                dataframe = pd.read_excel(uploaded_file)
+            else:
+                st.error('Wrong File extension plese provide :1 csv or :2 xlsx', icon="🚨")
+
+
         number = st.text_input('Cursor')
 
     button1 = st.button('Run')
