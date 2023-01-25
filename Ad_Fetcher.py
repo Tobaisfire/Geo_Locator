@@ -48,7 +48,7 @@ try:
             dataframe = pd.read_csv(uploaded_file)
         number = st.text_input('Cursor')
 
-    button1 = st.button('run')
+    button1 = st.button('Run')
 
 
     if st.session_state.get('button') != True:
