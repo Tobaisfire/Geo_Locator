@@ -44,6 +44,7 @@ try:
     with col1:
         uploaded_file = st.file_uploader("Choose a file")
         if uploaded_file is not None:
+            name = uploaded_file.name.split('.')[0]
             if (uploaded_file.name).split('.')[1] == 'csv':
                 print(uploaded_file.name)
                 dataframe = pd.read_csv(uploaded_file)
@@ -69,7 +70,7 @@ try:
 
     now = datetime.now()
     
-    dt_string = now.strftime("%d/%m/%Y %H:%M")
+    dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
     if button1:
         if uploaded_file is None:
             st.error('Scheduler is not given please provide :1 csv or :2 xlsx', icon="🚨")
@@ -136,14 +137,15 @@ try:
                                                 if len(dataframe) == len(df):
                                                     def convert_df(df):
                                                     
-                                                        return df.to_csv().encode('utf-8')
+                                                        return df.to_csv(index=False).encode('utf-8')
 
                                                     csv = convert_df(df)
+                                                    
 
                                                     st.download_button(
                                                     label="Download data as CSV",
                                                     data=csv,
-                                                    file_name='Loaction.csv',
+                                                    file_name=f'Location_{name}.csv',
                                                     mime='text/csv',
                                                             on_click=call_back)
                     if len(df) == len(dataframe):
@@ -151,14 +153,14 @@ try:
                 except Exception as e:
                     if len(df) >= 1:
                         def convert_df(df):
-                            return df.to_csv().encode('utf-8')
+                            return df.to_csv(index=False).encode('utf-8')
 
                         csv = convert_df(df)
 
                         st.download_button(
                         label="Download data as CSV",
                         data=csv,
-                        file_name='location.csv',
+                        file_name=f'location_{name}.csv',
                         mime='text/csv',
                         on_click=call_back)
 
